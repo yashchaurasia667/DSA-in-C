@@ -19,6 +19,23 @@ void traversal(struct Node *head) {
     while(ptr!=head);
 }
 
+//
+//  Insertion
+struct Node * insertionAsHead(struct Node *head, int data) {
+    struct Node *new, *ptr = head;
+    new = (struct Node *) malloc(sizeof(struct Node));
+
+    new->data = data;
+    new->next = head;
+
+    while(ptr->next != head)
+        ptr = ptr->next;
+    
+    ptr->next = new;
+
+    return new;
+}
+
 int main() {
 
     struct Node *head;
@@ -41,6 +58,7 @@ int main() {
     third->data = 9;
     third->next = head;        // Linking head to the second node
 
+    head = insertionAsHead(head, 45);
     traversal(head);
 
     return 0;
