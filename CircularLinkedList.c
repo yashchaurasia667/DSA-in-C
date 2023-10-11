@@ -36,6 +36,22 @@ struct Node * insertionAsHead(struct Node *head, int data) {
     return new;
 }
 
+struct Node * insertAt(struct Node *head, int data, int position) {
+    struct Node *ptr = head, *new;
+    new = (struct Node *) malloc(sizeof(struct Node));
+    new->data = data;
+
+    while(position-2) {
+        ptr = ptr->next;
+        position--;
+    }
+
+    new->next = ptr->next;
+    ptr->next = new;
+
+    return head;
+}
+
 int main() {
 
     struct Node *head;
@@ -59,6 +75,7 @@ int main() {
     third->next = head;        // Linking head to the second node
 
     head = insertionAsHead(head, 45);
+    head = insertAt(head, 99, 3);
     traversal(head);
 
     return 0;
