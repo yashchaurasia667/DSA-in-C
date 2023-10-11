@@ -52,6 +52,25 @@ struct Node * insertAt(struct Node *head, int data, int position) {
     return head;
 }
 
+//
+//  Deletion
+struct Node * deleteElement(struct Node *head, int position) {
+    struct Node *prev = head, *current = head->next;
+
+    if(position-1) {
+        while(position-1) {
+            prev = current;
+            current = current->next;
+            position--;
+        }
+
+        prev->next = current->next;
+        return head;
+    }
+
+    return head->next;
+}
+
 int main() {
 
     struct Node *head;
