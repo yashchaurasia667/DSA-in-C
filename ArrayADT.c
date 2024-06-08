@@ -1,41 +1,28 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include<stdio.h>
 
-struct myArray 
-{
-    int total_size;
-    int used_size;
-    int *ptr;
+/*
+functions:
+    Arrayinit -> to initialize an Array
+    printArray -> to print Array 
+*/
+
+struct myArray {
+    int maxSize;            //Total size
+    int usedSize;
+    int *ptr;               // points to the first element of the array
 };
 
-void createArray(struct myArray *a, int tSize, int uSize) {
-    // (*a).total_size = tSize;
-    // (*a).used_size = uSize;
-    // (*a).ptr = (int *) malloc(tSize*sizeof(int));
-    a->total_size = tSize;
-    a->used_size = uSize;
+void Arrayinit(struct myArray *a, int tSize) {
+    // Dereferencing the pointer to set values
+    (*a).maxSize = tSize;
+    (*a).ptr = (int *) malloc(tSize*sizeof(int));            // Allocates memory of tSize block where each block is of the size of an int (4 bytes)
+
+    // Using arrow operator to do the same thing
+    a->maxSize = tSize;
     a->ptr = (int *) malloc(tSize*sizeof(int));
 }
 
-void show(struct myArray *a) {
-    for(int i=0; i< a->used_size; i++) {
-        printf("%d", (a->ptr)[i]);
-    }
-}
-
-void setVal(struct myArray *a) {
-    for(int i=0; i< a->used_size; i++) {
-        printf("Enter element %d", i);
-        scanf("%d", (a->ptr)[i]);
-    }
-}
- 
-
 int main() {
     struct myArray marks;
-    createArray(&marks, 100, 20);
-    setVal(&marks);
-    show(&marks);
-
     return 0;
 }

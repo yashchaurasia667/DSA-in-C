@@ -6,9 +6,11 @@ struct Node {
     struct Node *next;
 };
 
+typedef struct Node Node_t;
+
 //
 //  Traversal
-void traversal(struct Node *ptr) {
+void traversal(Node_t *ptr) {
     while(ptr != NULL) {
         printf("%d\n", ptr->data);
         ptr = ptr->next;
@@ -17,10 +19,10 @@ void traversal(struct Node *ptr) {
 
 //
 //  Insertion at i
-struct Node * insertionAt(struct Node *ptr, int position, int data) {
-    struct Node *head = ptr;
-    struct Node *new;
-    new = (struct Node *) malloc(sizeof(struct Node));
+Node_t * insertionAt(Node_t *ptr, int position, int data) {
+    Node_t *head = ptr;
+    Node_t *new;
+    new = (Node_t *) malloc(sizeof(Node_t));
     new->data = data;
 
     if(position-1) {
@@ -44,9 +46,9 @@ struct Node * insertionAt(struct Node *ptr, int position, int data) {
 
 //
 //  Insertion after i
-void insertionAfter(struct Node *ptr, int position, int data) {
-    struct Node *new;
-    new = (struct Node *) malloc(sizeof(struct Node));
+void insertionAfter(Node_t *ptr, int position, int data) {
+    Node_t *new;
+    new = (Node_t *) malloc(sizeof(Node_t));
     new->data = data;
 
     while(position-1) {
@@ -60,11 +62,11 @@ void insertionAfter(struct Node *ptr, int position, int data) {
 
 //
 //  Deletion
-struct Node * Deletion(struct Node *ptr, int position) {
+Node_t * Deletion(Node_t *ptr, int position) {
     if(position) {
 
         //case 1 & 3 -> Deletion in between and last
-        struct Node *prev, *curr;
+        Node_t *prev, *curr;
         prev = ptr;
         curr = ptr->next;
 
@@ -84,14 +86,14 @@ struct Node * Deletion(struct Node *ptr, int position) {
 }
 
 int main() {
-    struct Node *head;
-    struct Node *second;
-    struct Node *third;
+    Node_t *head;
+    Node_t *second;
+    Node_t *third;
 
     //  Allocate memory for the Nodes in linked list in Heap
-    head = (struct Node *) malloc(sizeof(struct Node));
-    second = (struct Node *) malloc(sizeof(struct Node));
-    third = (struct Node *) malloc(sizeof(struct Node));
+    head = (Node_t *) malloc(sizeof(Node_t));
+    second = (Node_t *) malloc(sizeof(Node_t));
+    third = (Node_t *) malloc(sizeof(Node_t));
 
     head->data = 7;
     head->next = second;        // Linking head to the second node
